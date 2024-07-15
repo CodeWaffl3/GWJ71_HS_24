@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckwvhugqpmdun"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_83h1a"]
+[ext_resource type="PackedScene" uid="uid://fd6wghrxrcyp" path="res://Scenes/gun.tscn" id="2_1g6nf"]
+[ext_resource type="Texture2D" uid="uid://bkr4jg6v2says" path="res://Assets/Sprites/Character_SpriteSheet_01.png" id="3_tqbkm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6jmu"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvunw"]
+size = Vector2(37.3744, 45.6798)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_buvsn"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y62xa"]
+bg_color = Color(0.313726, 0.694118, 0.364706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx32n"]
+atlas = ExtResource("3_tqbkm")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ca51"]
+atlas = ExtResource("3_tqbkm")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xshnw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx32n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ca51")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_83h1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_f6jmu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(20, 20)
+
+[node name="Gun" parent="." instance=ExtResource("2_1g6nf")]
+position = Vector2(20, 20)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(20, 20)
+scale = Vector2(0.963227, 0.963227)
+shape = SubResource("RectangleShape2D_dvunw")
+debug_color = Color(0.909804, 0.247059, 0.439216, 0.419608)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_top = -17.0
+offset_right = 80.0
+offset_bottom = 10.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_buvsn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y62xa")
+show_percentage = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 16)
+scale = Vector2(4.01929, 4.01929)
+sprite_frames = SubResource("SpriteFrames_xshnw")
+animation = &"walk"
+frame_progress = 0.986975

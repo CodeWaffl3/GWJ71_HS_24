@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://beacmax1v1hpx"]
+
+[ext_resource type="Script" path="res://Scripts/Mob.gd" id="1_pyf7o"]
+[ext_resource type="Texture2D" uid="uid://bjw1l3cjc7ujm" path="res://Assets/Sprites/bad_dudes.png" id="2_kwv38"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u45ol"]
+size = Vector2(40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3lp2"]
+atlas = ExtResource("2_kwv38")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8118o"]
+atlas = ExtResource("2_kwv38")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdrje"]
+atlas = ExtResource("2_kwv38")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dde4b"]
+atlas = ExtResource("2_kwv38")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27gps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3lp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8118o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdrje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dde4b")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[node name="Mob" type="CharacterBody2D"]
+scale = Vector2(0.995551, 1)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_pyf7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
+shape = SubResource("RectangleShape2D_u45ol")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.87983, 2.87983)
+sprite_frames = SubResource("SpriteFrames_27gps")
+animation = &"walk"
+frame_progress = 0.145805
