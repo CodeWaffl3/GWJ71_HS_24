@@ -42,7 +42,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Mob" type="CharacterBody2D"]
+[node name="Mob3" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(0.995551, 1)
 collision_layer = 2
