@@ -13,6 +13,7 @@ _data = {
 point_count = 5
 
 [node name="Main" type="Node2D"]
+position = Vector2(6, 0)
 script = ExtResource("1_ibvw8")
 level_door_scene = ExtResource("2_t3gec")
 metadata/_edit_vertical_guides_ = [-336.0]

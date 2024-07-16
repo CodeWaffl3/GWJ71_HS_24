@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 @export var move_speed = 600
-@export var health = 100.0
+@export var health = SceneManager.player_health
 @export var damage_rate = 20.0
 signal health_depleted
 
 func _ready():
+	#health = SceneManager.player_health
 	$HealthBar.value = health
 
 func _physics_process(delta):
