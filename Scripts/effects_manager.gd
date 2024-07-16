@@ -32,6 +32,7 @@ func _process(delta):
 	pass
 
 func activate_sleep_effects():
+	full_heal()
 	is_goo=true
 	await get_tree().create_timer(1.0).timeout
 	print("Sleeping")
@@ -47,3 +48,8 @@ func goo_spawn():
 			temp_goo.global_position = enemy.global_position
 			get_tree().get_root().add_child(temp_goo)
 		
+func full_heal():
+	SceneManager.player_health = 100.0
+	SceneManager.just_healed = true
+	get_tree().get_nodes_in_group("players")[0].health = 100.0
+	get_tree().get_nodes_in_group("players")[0].update_healthbar()
