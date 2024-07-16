@@ -20,12 +20,16 @@ func take_damage():
 		queue_free()
 	#instantiate smoke
 	#
+
 func shoot():
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = position
 	var direction = global_position.direction_to(player.global_position)
 	new_bullet.rotation = direction.angle()
 	add_child(new_bullet)
-
+  
 func _on_shoot_timer_timeout():
 	shoot()
+
+func leave_goo():
+	pass
