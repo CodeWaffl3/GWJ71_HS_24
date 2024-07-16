@@ -46,7 +46,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_83h1a")
@@ -64,7 +64,7 @@ position = Vector2(20, 20)
 [node name="Hurtbox" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 4
-collision_mask = 2
+collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(20, 20)
@@ -87,3 +87,5 @@ scale = Vector2(4.01929, 4.01929)
 sprite_frames = SubResource("SpriteFrames_xshnw")
 animation = &"walk"
 frame_progress = 0.986975
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
