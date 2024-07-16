@@ -64,6 +64,7 @@ sleep={
 2d_physics/layer_3="player"
 2d_physics/layer_4="player_projectiles"
 2d_physics/layer_5="player_gun"
+2d_physics/layer_6="enemy_projectiles"
 
 [rendering]
 

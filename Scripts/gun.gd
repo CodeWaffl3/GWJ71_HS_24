@@ -1,4 +1,5 @@
 extends Area2D
+const BULLET = preload("res://Scenes/bullet.tscn")
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -12,7 +13,6 @@ func _physics_process(delta):
 	$WeaponPivot.rotation = get_local_mouse_position().angle()
 
 func shoot():
-	const BULLET = preload("res://Scenes/bullet.tscn")
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation

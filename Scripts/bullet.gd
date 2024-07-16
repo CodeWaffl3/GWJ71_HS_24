@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 1000
+@export var speed = 500
 @export var range = 1200
 var travelled_distance = 0
 
