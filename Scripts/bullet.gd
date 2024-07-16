@@ -1,8 +1,12 @@
 extends Area2D
 
-@export var speed = 500
+@export var speed = 1000
 @export var range = 1200
 var travelled_distance = 0
+
+func _ready():
+	if is_in_group("bad_bullets"):
+		speed = speed / 2
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
