@@ -3,7 +3,7 @@ const goo = preload("res://Scenes/FX/goo.tscn")
 
 var player_sleep_effects = ["", "", ""]
 var mobs_sleep_effects = []
-var is_goo = true
+var is_goo = false
 
 var timer:Timer
 
@@ -24,7 +24,7 @@ func _ready():
 	timer.one_shot = false
 	timer.autostart = true
 	timer.wait_time = 0.7
-	timer.timeout.connect(goo_spawn)
+	timer.timeout.connect(apply_effects)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,8 +32,12 @@ func _process(delta):
 	pass
 
 func activate_sleep_effects():
+	is_goo=true
 	await get_tree().create_timer(1.0).timeout
 	print("Sleeping")
+
+func apply_effects():
+	goo_spawn()
 
 func goo_spawn():
 	print("GOO SPAWN")
