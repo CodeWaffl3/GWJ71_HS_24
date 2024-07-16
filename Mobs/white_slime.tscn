@@ -42,7 +42,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Mob" type="CharacterBody2D"]
+[node name="Mob2" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(0.995551, 1)
 collision_layer = 2
@@ -57,3 +57,9 @@ scale = Vector2(2.87983, 2.87983)
 sprite_frames = SubResource("SpriteFrames_27gps")
 animation = &"walk"
 frame_progress = 0.0167541
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

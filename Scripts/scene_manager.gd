@@ -4,6 +4,7 @@ var is_main_current_scene = true
 var safe_chance = 0.2
 var is_safe = false
 var safe_roll
+var player_health = 100.0
 
 func change_to_random_level():
 	if is_safe:
@@ -15,6 +16,8 @@ func change_to_random_level():
 	SEffectsManager.apply_special_effects.emit()
 
 func apply_safe_chance():
+	player_health = get_tree().get_nodes_in_group("players")[0].health
+	print(player_health)
 	safe_roll = randf()
 	if is_main_current_scene:
 		is_main_current_scene = false
