@@ -40,7 +40,6 @@ func apply_effects():
 	goo_spawn()
 
 func goo_spawn():
-	print("GOO SPAWN")
 	if is_goo:
 		var enemies = get_tree().get_nodes_in_group("enemies")
 		for enemy in enemies:
