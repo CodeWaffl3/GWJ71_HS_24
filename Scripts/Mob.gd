@@ -18,3 +18,6 @@ func take_damage():
 		queue_free()
 	#instantiate smoke
 	#
+	
+func leave_goo():
+	pass

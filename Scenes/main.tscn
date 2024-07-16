@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://l3r3x7hhjag0"]
+[gd_scene load_steps=8 format=3 uid="uid://l3r3x7hhjag0"]
 
 [ext_resource type="PackedScene" uid="uid://ckwvhugqpmdun" path="res://Scenes/player.tscn" id="1_erogh"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ibvw8"]
 [ext_resource type="PackedScene" uid="uid://dawsu5aqech6x" path="res://Mobs/mob.tscn" id="2_1c3u7"]
 [ext_resource type="PackedScene" uid="uid://ciqucbtxqgd40" path="res://Scenes/level_door.tscn" id="2_t3gec"]
 [ext_resource type="Texture2D" uid="uid://bvomurfpgfv6g" path="res://Assets/Menus/HeavySleeper.png" id="5_j4y4g"]
+[ext_resource type="PackedScene" uid="uid://dbgbho4468p0q" path="res://Scenes/FX/goo.tscn" id="6_oswbm"]
 
 [sub_resource type="Curve2D" id="Curve2D_o12it"]
 _data = {
@@ -153,6 +154,9 @@ curve = SubResource("Curve2D_o12it")
 
 [node name="LevelDoorSpawnLocation" type="PathFollow2D" parent="LevelDoorPath"]
 position = Vector2(8, 8)
+
+[node name="Goo" parent="." instance=ExtResource("6_oswbm")]
+position = Vector2(240, 384)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="pressed" from="GameOver/ExitButton2" to="." method="_on_exit_button_pressed"]
